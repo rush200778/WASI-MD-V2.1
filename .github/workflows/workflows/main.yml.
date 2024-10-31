@@ -1,0 +1,31 @@
+name: CI with WASI-MD-V2
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Action pour récupérer le code source
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2  # Installer Node.js si nécessaire
+      with:
+        node-version: '14'  # Spécifiez la version de Node.js que vous utilisez
+
+    - name: Install dependencies
+      run: |
+        echo "Installing dependencies..."
+        npm install  # Installer les dépendances si vous utilisez npm
+
+    - name: Run WASI-MD-V2
+      run: |
+        echo "Running WASI-MD-V2..."
+        # Exécutez ici votre commande pour WASI-MD-V2
+        node your-script.js  # Remplacez par le nom de votre script
